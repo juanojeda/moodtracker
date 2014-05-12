@@ -1,0 +1,29 @@
+<header class="header">
+  <h1>Moodtracker</h1>
+
+  <a class="info">What is this?</a>
+</header>
+
+<div class="howyadoin">
+  <h2>How are you feeling?</h2>
+</div>
+
+<div class="moodtracker">
+  <figure class="moodtracker-vis">Mood face goes here</figure>
+  <div class="moodtracker-controls">
+    <select name="currentMood" id="currentMood" ng-model="currentMood" n>
+      <option value="0" selected>Choose your mood</option>
+      <option value="3">Super Happy!</option>
+      <option value="2">Very Happy</option>
+      <option value="1">Pretty Happy</option>
+      <option value="-1">Pretty Unhappy</option>
+      <option value="-2">Very Unhappy</option>
+      <option value="-3">Super Unhappy!</option>
+    </select>
+  </div>
+  <button class="moodtracker-submit">{{currentMood}}</button>
+</div>
+
+<footer class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> from the Kiandra team</p>
+</footer>
