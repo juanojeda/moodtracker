@@ -11,17 +11,15 @@
 <div class="moodtracker">
   <figure class="moodtracker-vis">Mood face goes here</figure>
   <div class="moodtracker-controls">
-    <select name="currentMood" id="currentMood" ng-model="currentMood" n>
-      <option value="0" selected>Choose your mood</option>
-      <option value="3">Super Happy!</option>
-      <option value="2">Very Happy</option>
-      <option value="1">Pretty Happy</option>
-      <option value="-1">Pretty Unhappy</option>
-      <option value="-2">Very Unhappy</option>
-      <option value="-3">Super Unhappy!</option>
+    <select id="currentMood"
+            name="currentMood"
+            ng-model="moodValue">
+        <option ng-repeat="(i, mood) in moods" value="{{i}}">{{mood.text}}</option>
     </select>
   </div>
-  <button class="moodtracker-submit">{{currentMood}}</button>
+  <div></div>
+  <button class="moodtracker-submit" ng-click="setMood(currentMood().value)">{{currentMood().text}}</button>
+  <span ng-if="averageMood()">{{averageMood()}} out of {{moodsArr.length}} moods</span>
 </div>
 
 <footer class="footer">

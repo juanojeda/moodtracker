@@ -123,9 +123,15 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*'
           ]
-        }]
+        }],
+        options: {
+          force: true
+        }
       },
-      server: '.tmp'
+      server: '.tmp',
+      options: {
+        force: true
+      }
     },
 
     // Add vendor prefixed styles
@@ -367,7 +373,7 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
+    // 'karma'
   ]);
 
   grunt.registerTask('build', [

@@ -9,6 +9,7 @@
     "bootstrap": "~3.0.3",
     "angular-resource": "1.2.15",
     "angular-cookies": "1.2.15",
+    "underscore": "~1.6.0",
     "angular-route": "1.2.15"
   },
   "devDependencies": {
