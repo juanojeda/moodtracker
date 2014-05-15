@@ -38,6 +38,13 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
+      less: {
+        files: ['app/less/**/*'],
+        tasks: ['less:dev'],
+        options: {
+          livereload: true
+        }
+      },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
@@ -58,6 +65,15 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      }
+    },
+
+    less: {
+      dev: {
+        files: {
+          // path/to/result : path/to/source
+           'app/styles/main.css': 'app/less/app.less'
+        }
       }
     },
 
@@ -355,6 +371,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'less:dev',
       'bowerInstall',
       'concurrent:server',
       'autoprefixer',
@@ -381,6 +398,7 @@ module.exports = function (grunt) {
     'bowerInstall',
     'useminPrepare',
     'concurrent:dist',
+    'less:dev',
     'autoprefixer',
     'concat',
     'ngmin',

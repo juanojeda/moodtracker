@@ -8,31 +8,38 @@ angular.module('moodtrackerApp')
     var moods = [
         {
             value: 0,
-            text: 'tell us how you feel'
+            text: 'tell us how you feel',
+            moodClass: 'mood-none'
         },
         {
             value: -3,
-            text: 'super unhappy'
+            text: 'super unhappy',
+            moodClass: 'mood-super-unhappy'
         },
         {
             value: -2,
-            text: 'very unhappy'
+            text: 'very unhappy',
+            moodClass: 'mood-very-unhappy'
         },
         {
             value: -1,
-            text: 'pretty unhappy'
+            text: 'pretty unhappy',
+            moodClass: 'mood-pretty-unhappy'
         },
         {
             value: 1,
-            text: 'pretty happy'
+            text: 'pretty happy',
+            moodClass: 'mood-pretty-happy'
         },
         {
             value: 2,
-            text: 'very happy'
+            text: 'very happy',
+            moodClass: 'mood-very-happy'
         },
         {
             value: 3,
-            text: 'super happy'
+            text: 'super happy',
+            moodClass: 'mood-super-happy'
         },
     ];
 
@@ -62,14 +69,13 @@ angular.module('moodtrackerApp')
         var calculateTotal = _.reduce(moodsArr, function(memo, val){ return memo + val;}, 0);
 
         var average = Math.round(calculateTotal / moodsCount * 100) / 100;
+        average = average.toString();
 
-        return average ? average : null;
+        return moodsArr.length ? average : null;
     }
 
     $scope.currentMood = getCurrentMood;
     $scope.setMood = setMood;
-    $scope.averageMood = function(){
-        return getAverageMood($scope.moodsArr);
-    };
+    $scope.getAverageMood = getAverageMood;
 
   });

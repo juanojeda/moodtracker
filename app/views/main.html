@@ -19,7 +19,7 @@
   </div>
   <div></div>
   <button class="moodtracker-submit" ng-click="setMood(currentMood().value)">{{currentMood().text}}</button>
-  <span ng-if="averageMood()">{{averageMood()}} out of {{moodsArr.length}} moods</span>
+  <span ng-if="moodsArr.length">{{getAverageMood(moodsArr)}} out of {{moodsArr.length}} moods</span>
 </div>
 
 <footer class="footer">
