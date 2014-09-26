@@ -3,10 +3,10 @@
 
 angular.module('moodtrackerApp')
     .factory('moodService', ['$firebase', function($firebase){
-        var ref = new Firebase('https://kmoods.firebaseio.com/');
+        var ref = new Firebase('https://kmoods.firebaseio.com/moods');
         return $firebase(ref);
     }])
-    .controller('MainCtrl', ['$scope', 'moodService', function ($scope, moodService) {
+    .controller('MainCtrl', ['$scope', '$filter', 'moodService', function ($scope, $filter, moodService) {
 
             $scope.moods = [
                 {
@@ -46,13 +46,27 @@ angular.module('moodtrackerApp')
                 },
             ];
 
-            $scope.moodsArr = moodService;
+            // TODO
+            // ===============
+            // - add a firebase global variable that tracks moods per day
+            // - add a firebase global variable that tracks the running average
 
-            console.log(moodService);
+            $scope.moodsService = moodService;
             //set to first item in moods
             $scope.moodValue = 0;
             // set a base mood level
             $scope.averageMood = 0;
+
+            function getToday(){
+
+                var todayFull = new Date(Date.now());
+
+                var today = $filter('date')(todayFull, 'yyyyMMdd');
+
+                return today;
+            }
+
+            $scope.today = getToday();
 
             function getCurrentMood(){
                 return $scope.moods[$scope.moodValue];
@@ -60,10 +74,17 @@ angular.module('moodtrackerApp')
 
             function setMood(moodValue){
 
+                var timeFull = Date.now();
+                var time = $filter('date')(timeFull, 'HHmmss');
+
                 // can't set an unset mood
                 if (moodValue !== 0){
                     // take current mood, and push it to moodsArr
-                    $scope.moodsArr.$add(moodValue);
+
+                    $scope.moodsService
+                        .$child($scope.today)
+                        .$child(time)
+                        .$set(moodValue);
                 }
             }
 

@@ -1,0 +1,34 @@
+// _mood-bg.less
+
+.main-container {
+    .transition(1000ms ease-out all);
+    &, &.mood-none {
+        background: @clr-neutral;
+    }
+    &.mood-{
+        &super-happy {
+            background: @clr-super-happy;
+            color: @clr-super-happy-text;
+        }
+        &pretty-happy {
+            background: @clr-pretty-happy;
+            color: @clr-pretty-happy-text;
+        }
+        &very-happy {
+            background: @clr-very-happy;
+            color: @clr-very-happy-text;
+        }
+        &pretty-unhappy {
+            background: @clr-pretty-unhappy;
+            color: @clr-pretty-unhappy-text;
+        }
+        &very-unhappy {
+            background: @clr-very-unhappy;
+            color: @clr-very-unhappy-text;
+        }
+        &super-unhappy {
+            background: @clr-super-unhappy;
+            color: @clr-super-unhappy-text;
+        }
+    }
+}
