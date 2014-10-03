@@ -619,6 +619,19 @@ body {
 .main-container,
 .main-container.mood-none {
   background: #0e4b5e;
+  color: #fff;
+  width: 100%;
+}
+.main-container svg,
+.main-container.mood-none svg,
+.main-container path,
+.main-container.mood-none path {
+  -webkit-transition: 500ms ease-out all;
+  transition: 500ms ease-out all;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 10;
+  stroke-line-cap: round;
 }
 .main-container.mood-super-happy {
   background: #28d491;

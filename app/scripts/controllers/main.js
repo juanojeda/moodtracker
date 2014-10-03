@@ -12,37 +12,44 @@ angular.module('moodtrackerApp')
                 {
                     value: 0,
                     text: 'tell us how you feel',
-                    moodClass: 'mood-none'
+                    moodClass: 'mood-none',
+                    mouthShape: 'neutral'
                 },
                 {
                     value: -3,
                     text: 'super unhappy',
-                    moodClass: 'mood-super-unhappy'
+                    moodClass: 'mood-super-unhappy',
+                    mouthShape: 'upset3'
                 },
                 {
                     value: -2,
                     text: 'very unhappy',
-                    moodClass: 'mood-very-unhappy'
+                    moodClass: 'mood-very-unhappy',
+                    mouthShape: 'upset2'
                 },
                 {
                     value: -1,
                     text: 'pretty unhappy',
-                    moodClass: 'mood-pretty-unhappy'
+                    moodClass: 'mood-pretty-unhappy',
+                    mouthShape: 'upset1'
                 },
                 {
                     value: 1,
                     text: 'pretty happy',
-                    moodClass: 'mood-pretty-happy'
+                    moodClass: 'mood-pretty-happy',
+                    mouthShape: 'happy1'
                 },
                 {
                     value: 2,
                     text: 'very happy',
-                    moodClass: 'mood-very-happy'
+                    moodClass: 'mood-very-happy',
+                    mouthShape: 'happy2'
                 },
                 {
                     value: 3,
                     text: 'super happy',
-                    moodClass: 'mood-super-happy'
+                    moodClass: 'mood-super-happy',
+                    mouthShape: 'happy3'
                 },
             ];
 
@@ -72,6 +79,14 @@ angular.module('moodtrackerApp')
                 return $scope.moods[$scope.moodValue];
             }
 
+            function emitSetMouth(){
+
+                var mouthShape = $scope.moods[$scope.moodValue].mouthShape;
+
+                $scope.$emit('setMouth', mouthShape);
+                console.log('a thing');
+            }
+
             function setMood(moodValue){
 
                 var timeFull = Date.now();
@@ -86,6 +101,8 @@ angular.module('moodtrackerApp')
                         .$child(time)
                         .$set(moodValue);
                 }
+
+                $scope.emitSetMouth();
             }
 
             function getAverageMood(moodsArr){
@@ -101,5 +118,6 @@ angular.module('moodtrackerApp')
             $scope.currentMood = getCurrentMood;
             $scope.setMood = setMood;
             $scope.getAverageMood = getAverageMood;
+            $scope.setMouth = emitSetMouth;
 
         }]);

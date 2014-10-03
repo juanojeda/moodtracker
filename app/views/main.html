@@ -9,7 +9,9 @@
 </div>
 
 <div class="moodtracker">
-  <figure class="moodtracker-vis">Mood face goes here</figure>
+  <figure class="moodtracker-vis" ng-controller="faceCtrl">
+    <svg id="face" viewbox="0 0 100 80"></svg>
+  </figure>
   <div class="moodtracker-controls">
     <select id="currentMood"
             name="currentMood"
