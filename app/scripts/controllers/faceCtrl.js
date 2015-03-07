@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('moodtrackerApp')
-    .controller('faceCtrl', ['$scope', function($scope){
+    .controller('faceCtrl', ['$scope', function ($scope){
 
         // set up canvas
 
@@ -24,10 +24,15 @@ angular.module('moodtrackerApp')
 
         face.append(mouth);
 
-        function setMouthShape() {
-            console.log('asdf');
-            mouth.animate({d: $scope.mouths[$scope.mouthShape]});
+        function setMouthShape(moods) {
+            var oldMouth = $scope.mouths[moods[1]];
+            var newMouth = $scope.mouths[moods[0]];
+            console.log(oldMouth + '\n' + newMouth);
+            if (oldMouth !== newMouth){
+                mouth.animate({d: newMouth}, 300);
+            }
         }
+
 
         $scope.$on('setMouth', function(event, args){
             setMouthShape(args);

@@ -20,7 +20,7 @@
     </select>
   </div>
   <div></div>
-  <button class="moodtracker-submit" ng-click="setMood(currentMood().value)">{{currentMood().text}}</button>
+  <button class="moodtracker-submit" ng-if="currentMood().value" ng-click="setMood(currentMood().value)">I'm feeling {{currentMood().text}}</button>
   <span ng-if="moodsArr.length">{{getAverageMood(moodsArr)}} out of {{moodsArr.length}} moods</span>
 </div>
 
