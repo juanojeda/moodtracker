@@ -593,10 +593,79 @@ address {
   font-family: 'Pacifico';
   font-style: normal;
   font-weight: 400;
-  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(http://themes.googleusercontent.com/static/fonts/pacifico/v5/fKnfV28XkldRW297cFLeqfesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(http://fonts.gstatic.com/s/pacifico/v7/fKnfV28XkldRW297cFLeqfesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
 }
 h1,
 h2,
 h3 {
   font-family: "pacifico", serif;
+}
+h1 {
+  font-size: 10vh;
+}
+h2 {
+  font-size: 5vh;
+}
+h3 {
+  font-size: 2.5vh;
+}
+body {
+  color: #f2f2f2;
+}
+.main-container {
+  -webkit-transition: 1000ms ease-out all;
+  transition: 1000ms ease-out all;
+}
+.main-container,
+.main-container.mood-none {
+  background: #0e4b5e;
+  color: #fff;
+  width: 100%;
+}
+.main-container svg,
+.main-container.mood-none svg,
+.main-container path,
+.main-container.mood-none path {
+  -webkit-transition: 500ms ease-out all;
+  transition: 500ms ease-out all;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 10;
+  stroke-line-cap: round;
+}
+.main-container.mood-super-happy {
+  background: #28d491;
+  color: #156e4b;
+}
+.main-container.mood-pretty-happy {
+  background: #edf0b2;
+  color: #7c994d;
+}
+.main-container.mood-very-happy {
+  background: #8be2a2;
+  color: #4c7c59;
+}
+.main-container.mood-pretty-unhappy {
+  background: #ffca82;
+  color: #cc7b29;
+}
+.main-container.mood-very-unhappy {
+  background: #ff926e;
+  color: #cc5129;
+}
+.main-container.mood-super-unhappy {
+  background: #ff5959;
+  color: #b32424;
+}
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+body .main-container {
+  border: 1px solid transparent;
+  height: 100%;
+  padding: 0 20%;
 }
