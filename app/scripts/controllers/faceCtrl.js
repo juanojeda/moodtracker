@@ -22,6 +22,10 @@ angular.module('moodtrackerApp')
             d: $scope.mouths.neutral
         });
 
+        $scope.dir = {
+            dir: 'foo'
+        };
+
         face.append(mouth);
 
         function setMouthShape(moods) {
@@ -32,9 +36,38 @@ angular.module('moodtrackerApp')
             }
         }
 
+        function smileMore(){
+            var mood = $scope.$parent.moodValue;
+            
+            if (!mood || mood === 0){
+                $scope.$parent.moodValue = 4;
+                return;
+            }
+            if (mood === 6){
+                return;
+            }
+            $scope.$parent.moodValue++;
+        }
+
+        function frownMore(){
+            var mood = $scope.$parent.moodValue;
+            
+            if (!mood || mood === 0){
+                $scope.$parent.moodValue = 3;
+                return;
+            }
+            if (mood === 1){
+                return;
+            }
+            $scope.$parent.moodValue--;
+        }
 
         $scope.$on('setMouth', function(event, args){
             setMouthShape(args);
         });
+        $scope.moodChange = {
+            up: smileMore,
+            down: frownMore
+        };
 
     }]);
