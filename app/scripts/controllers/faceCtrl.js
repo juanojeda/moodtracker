@@ -22,10 +22,6 @@ angular.module('moodtrackerApp')
             d: $scope.mouths.neutral
         });
 
-        $scope.dir = {
-            dir: 'foo'
-        };
-
         face.append(mouth);
 
         function setMouthShape(moods) {
@@ -35,6 +31,10 @@ angular.module('moodtrackerApp')
                 mouth.animate({d: newMouth}, 300);
             }
         }
+
+        // use a holder value that increments by .1,
+        // and when it reaches an integer, set the moodValue
+        
 
         function smileMore(){
             var mood = $scope.$parent.moodValue;
