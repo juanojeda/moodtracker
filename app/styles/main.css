@@ -663,8 +663,11 @@ body .main-container {
 body .moodtracker-vis {
   margin-top: 10vh;
 }
-body .moodtracker-vis svg {
-  max-height: 50vh;
+body .moodtracker-vis #eyes {
+  max-height: 11.11111111vh;
+}
+body .moodtracker-vis #mouth {
+  max-height: 38.88888889vh;
 }
 svg {
   -webkit-transition: 500ms ease-out all;
