@@ -35,7 +35,6 @@ angular.module('moodtrackerApp')
         var holderThreshold = 5;
 
         function holderToMood(dir){
-            console.log(holderVal);
             if (holderVal !== holderThreshold){
                 return;
             }
