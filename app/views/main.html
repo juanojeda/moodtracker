@@ -10,7 +10,7 @@
 </div>
 
 <div class="moodtracker">
-  <figure class="moodtracker-vis" ng-controller="faceCtrl" hm-panup="moodChange.down()" hm-pandown="moodChange.up()" hm-recognizer-options='{"threshold": 50}'>
+  <figure class="moodtracker-vis" ng-controller="faceCtrl" hm-panup="moodChange.down()" hm-pandown="moodChange.up()" hm-panend="moodChange.resetHolder()" hm-recognizer-options='{"threshold": 40}'>
     <svg id="face" viewbox="0 0 100 80"></svg>
   </figure>
 

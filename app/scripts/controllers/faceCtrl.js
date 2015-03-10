@@ -32,9 +32,26 @@ angular.module('moodtrackerApp')
             }
         }
 
-        // use a holder value that increments by .1,
-        // and when it reaches an integer, set the moodValue
-        
+        // use a holder value that increments by 1,
+        // and when it reaches an 10, set the moodValue up or down
+        var holderVal = 0;
+        var holderThreshold = 5;
+
+        function holderToMood(dir){
+            console.log(holderVal);
+            if (holderVal !== holderThreshold){
+                return;
+            }
+            if(dir === 'up'){
+                $scope.$parent.moodValue++
+            } else if(dir === 'down'){
+                $scope.$parent.moodValue--;
+            }
+            resetHolder();
+        }
+        function resetHolder(){
+            holderVal = 0;
+        }
 
         function smileMore(){
             var mood = $scope.$parent.moodValue;
@@ -46,7 +63,9 @@ angular.module('moodtrackerApp')
             if (mood === 6){
                 return;
             }
-            $scope.$parent.moodValue++;
+            // $scope.$parent.moodValue++;
+            holderVal++;
+            holderToMood('up');
         }
 
         function frownMore(){
@@ -59,7 +78,9 @@ angular.module('moodtrackerApp')
             if (mood === 1){
                 return;
             }
-            $scope.$parent.moodValue--;
+            // $scope.$parent.moodValue--;
+            holderVal++;
+            holderToMood('down');
         }
 
         $scope.$on('setMouth', function(event, args){
@@ -67,7 +88,8 @@ angular.module('moodtrackerApp')
         });
         $scope.moodChange = {
             up: smileMore,
-            down: frownMore
+            down: frownMore,
+            resetHolder: resetHolder
         };
 
     }]);
