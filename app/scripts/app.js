@@ -5,6 +5,7 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
+    'hmTouchEvents',
     'firebase'
   ])
   .config(function ($routeProvider) {
