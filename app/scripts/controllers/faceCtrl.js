@@ -31,9 +31,6 @@ angular.module('moodtrackerApp')
                 mouth.animate({d: newMouth}, 300);
             }
         }
-
-        // use a holder value that increments by 1,
-        // and when it reaches an 10, set the moodValue up or down
         var holderVal = 0;
         var holderThreshold = 5;
 
@@ -63,7 +60,6 @@ angular.module('moodtrackerApp')
             if (mood === 6){
                 return;
             }
-            // $scope.$parent.moodValue++;
             holderVal++;
             holderToMood('up');
         }
@@ -78,7 +74,6 @@ angular.module('moodtrackerApp')
             if (mood === 1){
                 return;
             }
-            // $scope.$parent.moodValue--;
             holderVal++;
             holderToMood('down');
         }
