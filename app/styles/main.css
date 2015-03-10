@@ -685,24 +685,50 @@ svg#mouth {
   border-radius: .25em;
   font-family: "pacifico", serif;
   font-size: 5vh;
+  -webkit-transition: 100ms ease all;
+  transition: 100ms ease all;
   background: rgba(255, 255, 255, 0.7);
   color: currentColor;
+}
+.moodtracker-submit:focus {
+  outline: none;
+}
+.moodtracker-submit:active {
+  margin-top: .15em;
 }
 .mood-super-happy .moodtracker-submit {
   box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #21b079;
 }
+.mood-super-happy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.2em #21b079;
+}
 .mood-very-happy .moodtracker-submit {
   box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #75be88;
+}
+.mood-very-happy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #75be88;
 }
 .mood-pretty-happy .moodtracker-submit {
   box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #c5d28f;
 }
+.mood-pretty-happy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #c5d28f;
+}
 .mood-super-unhappy .moodtracker-submit {
   box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #e44646;
+}
+.mood-super-unhappy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #e44646;
 }
 .mood-very-unhappy .moodtracker-submit {
   box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #ed7b56;
 }
+.mood-very-unhappy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #ed7b56;
+}
 .mood-pretty-unhappy .moodtracker-submit {
   box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #edae63;
+}
+.mood-pretty-unhappy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #edae63;
 }

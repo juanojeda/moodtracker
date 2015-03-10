@@ -16,7 +16,8 @@
     <svg id="mouth" viewbox="0 0 100 70"></svg>
   </figure>
 
-  <div class="text-center">
-    <button class="moodtracker-submit" ng-if="currentMood().value" ng-click="setMood(currentMood().value)">I'm feeling {{currentMood().text}}</button>
+  <div class="text-center type-h2 type-fancy" ng-if="currentMood().value">
+    <p>I'm Feeling</p>
+    <button class="moodtracker-submit" ng-click="setMood(currentMood().value)">{{currentMood().text}}</button>
   </div>
 </div>
