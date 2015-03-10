@@ -595,9 +595,7 @@ address {
   font-weight: 400;
   src: local('Pacifico Regular'), local('Pacifico-Regular'), url(http://fonts.gstatic.com/s/pacifico/v7/fKnfV28XkldRW297cFLeqfesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
 }
-h1,
-h2,
-h3 {
+.type-fancy {
   font-family: "pacifico", serif;
 }
 h1 {
