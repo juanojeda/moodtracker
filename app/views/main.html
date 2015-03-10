@@ -9,13 +9,13 @@
 
 <div class="moodtracker">
   <figure class="moodtracker-vis" ng-controller="faceCtrl" hm-panup="moodChange.down()" hm-pandown="moodChange.up()" hm-panend="moodChange.resetHolder()" hm-recognizer-options='{"threshold": 40}'>
-    <svg id="face" viewbox="0 0 100 80"></svg>
+    <svg id="eyes" viewbox="0 0 100 20">
+      <circle cx="30" cy="10" ng-attr-r="{{currentMood().value + 5}}"/>
+      <circle cx="70" cy="10" ng-attr-r="{{currentMood().value + 5}}"/>
+    </svg>
+    <svg id="mouth" viewbox="0 0 100 70"></svg>
   </figure>
 
 
   <button class="moodtracker-submit" ng-if="currentMood().value" ng-click="setMood(currentMood().value)">I'm feeling {{currentMood().text}}</button>
-  <span ng-if="moodsArr.length">{{getAverageMood(moodsArr)}} out of {{moodsArr.length}} moods</span>
 </div>
-
-<footer class="footer">
-</footer>

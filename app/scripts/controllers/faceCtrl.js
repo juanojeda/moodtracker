@@ -6,7 +6,7 @@ angular.module('moodtrackerApp')
 
         // set up canvas
 
-        var face = new Snap('#face');
+        var face = new Snap('#mouth');
 
         $scope.mouths = {
             happy3:  'M10 10 C05 70, 95 70, 90 10',
@@ -40,7 +40,7 @@ angular.module('moodtrackerApp')
                 return;
             }
             if(dir === 'up'){
-                $scope.$parent.moodValue++
+                $scope.$parent.moodValue++;
             } else if(dir === 'down'){
                 $scope.$parent.moodValue--;
             }

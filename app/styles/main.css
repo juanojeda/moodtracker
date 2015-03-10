@@ -620,17 +620,6 @@ body {
   color: #fff;
   width: 100%;
 }
-.main-container svg,
-.main-container.mood-none svg,
-.main-container path,
-.main-container.mood-none path {
-  -webkit-transition: 500ms ease-out all;
-  transition: 500ms ease-out all;
-  fill: transparent;
-  stroke: currentColor;
-  stroke-width: 10;
-  stroke-line-cap: round;
-}
 .main-container.mood-super-happy {
   background: #28d491;
   color: #156e4b;
@@ -667,4 +656,21 @@ body .main-container {
   height: 100%;
   padding: 0 10%;
   width: 100%;
+}
+body .moodtracker-vis {
+  margin-top: 10vh;
+}
+body .moodtracker-vis svg {
+  max-height: 50vh;
+}
+svg {
+  -webkit-transition: 500ms ease-out all;
+  transition: 500ms ease-out all;
+  stroke: currentColor;
+  fill: currentColor;
+}
+svg#mouth {
+  fill: transparent;
+  stroke-width: 10;
+  stroke-line-cap: round;
 }
