@@ -13,6 +13,6 @@ moodtracker
 - [ ] feedback on submit
 
 ## stretch objectives
-- [ ] add eyes
+- [x] add eyes
 - [ ] show "reward" for sharing
 - [ ] ask reason for unhappiness
