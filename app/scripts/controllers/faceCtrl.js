@@ -31,10 +31,60 @@ angular.module('moodtrackerApp')
                 mouth.animate({d: newMouth}, 300);
             }
         }
+        var holderVal = 0;
+        var holderThreshold = 5;
 
+        function holderToMood(dir){
+            console.log(holderVal);
+            if (holderVal !== holderThreshold){
+                return;
+            }
+            if(dir === 'up'){
+                $scope.$parent.moodValue++
+            } else if(dir === 'down'){
+                $scope.$parent.moodValue--;
+            }
+            resetHolder();
+        }
+        function resetHolder(){
+            holderVal = 0;
+        }
+
+        function smileMore(){
+            var mood = $scope.$parent.moodValue;
+            
+            if (!mood || mood === 0){
+                $scope.$parent.moodValue = 4;
+                return;
+            }
+            if (mood === 6){
+                return;
+            }
+            holderVal++;
+            holderToMood('up');
+        }
+
+        function frownMore(){
+            var mood = $scope.$parent.moodValue;
+            
+            if (!mood || mood === 0){
+                $scope.$parent.moodValue = 3;
+                return;
+            }
+            if (mood === 1){
+                return;
+            }
+            holderVal++;
+            holderToMood('down');
+        }
 
         $scope.$on('setMouth', function(event, args){
             setMouthShape(args);
         });
+        $scope.moodChange = {
+            up: smileMore,
+            down: frownMore,
+            resetHolder: resetHolder
+        };
 
     }]);

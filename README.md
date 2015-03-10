@@ -7,9 +7,12 @@ moodtracker
 - [x] colours set based on mood
 - [x] faces set based on mood
 - [x] svg faces animating smoothly
-- [ ] use day's average mood to set initial mood
+- [x] swipe interaction for setting mood
+- [ ] add instructions for how to use
+- [ ] use day's average mood to set initial mood (colours only)
 - [ ] feedback on submit
 
 ## stretch objectives
+- [ ] add eyes
 - [ ] show "reward" for sharing
 - [ ] ask reason for unhappiness
