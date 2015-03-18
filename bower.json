@@ -12,7 +12,7 @@
     "underscore": "~1.6.0",
     "firebase": "~1.0.15",
     "angular-route": "1.2.15",
-    "angularfire": "~0.7.1",
+    "angularfire": "~1.0.0",
     "snap.svg": "~0.3.0",
     "ryanmullins-angular-hammer": "~2.1.10"
   },

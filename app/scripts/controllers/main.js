@@ -2,9 +2,14 @@
 'use strict';
 
 angular.module('moodtrackerApp')
-    .factory('moodService', ['$firebase', function($firebase){
+    .factory('moodService', ['$firebaseObject', '$firebaseArray', function($firebaseObject, $firebaseArray){
         var ref = new Firebase('https://kmoods.firebaseio.com/moods');
-        return $firebase(ref);
+
+        // this is wrong, learn how to use $firebaseArray and $firebaseObject
+        return {
+            object: $firebaseObject(ref),
+            array: $firebaseArray(ref)
+        };
     }])
     .controller('MainCtrl', ['$scope', '$filter', 'moodService', function ($scope, $filter, moodService) {
 
@@ -58,12 +63,6 @@ angular.module('moodtrackerApp')
             // - add a firebase global variable that tracks moods per day
             // - add a firebase global variable that tracks the running average
 
-            $scope.moodsService = moodService;
-            //set to first item in moods
-            $scope.moodValue = 0;
-            // set a base mood level
-            $scope.averageMood = 0;
-
             function getToday(){
 
                 var todayFull = new Date(Date.now());
@@ -73,10 +72,15 @@ angular.module('moodtrackerApp')
                 return today;
             }
 
-            $scope.today = getToday();
 
             function getCurrentMood(){
-                return $scope.moods[$scope.moodValue];
+
+                if ($scope.moodValue !== 0){
+                    return $scope.moods[$scope.moodValue];
+                }
+                else {
+                    return $scope.moods[$scope.getAverageMood()];
+                }
             }
 
             function emitSetMouth(moods){
@@ -90,36 +94,70 @@ angular.module('moodtrackerApp')
             function setMood(moodValue){
 
                 var timeFull = Date.now();
+                var today = getToday();
                 var time = $filter('date')(timeFull, 'HHmmss');
+                var moodsArray = $scope.moodService.array;
+                var todaysArray = moodsArray.$getRecord(today);
 
                 // can't set an unset mood
                 if (moodValue !== 0){
-                    // take current mood, and push it to moodsArr
+                    if (todaysArray === null) {
+                        $scope.moodService.object[today] = {};
+                    }
 
-                    $scope.moodsService
-                        .$child($scope.today)
-                        .$child(time)
-                        .$set(moodValue);
+                    // take current mood, and push it to moodsArr
+                    $scope.moodService.object[today][time] = $scope.moodValue;
+                    $scope.moodService.object.$save();
+
+                    $scope.resetMood();
                 }
             }
 
-            function getAverageMood(moodsArr){
-                var moodsCount = moodsArr.length;
-                var calculateTotal = _.reduce(moodsArr, function(memo, val){ return memo + val;}, 0);
-
-                var average = Math.round(calculateTotal / moodsCount * 100) / 100;
-                average = average.toString();
-
-                return moodsArr.length ? average : null;
+            function resetMood(){
+                $scope.moodValue = 0;
             }
 
-            $scope.$watch('moodValue', function(newMood, oldMood){
-                $scope.setMouth([newMood, oldMood]);
-            });
 
-            $scope.currentMood = getCurrentMood;
-            $scope.setMood = setMood;
-            $scope.getAverageMood = getAverageMood;
-            $scope.setMouth = emitSetMouth;
+
+            function getAverageMood(){
+                var obj = $scope.moodService.object;
+                    var moodsArr;
+
+                    angular.forEach(obj, function(val){
+                        if (typeof val === 'object'){
+                            moodsArr = _.values(val);
+                        }
+                    });
+
+                    var total = _.reduce(moodsArr, function(mem, val){
+                        return mem + val;
+                    }, 0);
+                    
+                    var average = Math.round((total / moodsArr.length * 100) / 100);
+                    return average;
+
+            }
+            $scope.moodService = moodService;
+
+            $scope.moodService.object.$loaded()
+                .then(function(){
+                    //set to first item in moods
+                    $scope.moodValue = 0;
+                    
+                    // set a base mood level
+                    $scope.today = getToday();
+
+                    // put functions on $scope
+                    $scope.resetMood = resetMood;
+                    $scope.currentMood = getCurrentMood;
+                    $scope.setMood = setMood;
+                    $scope.getAverageMood = getAverageMood;
+                    // $scope.moodClass = ;
+                    $scope.setMouth = emitSetMouth;
+
+                    $scope.$watch('moodValue', function(newMood, oldMood){
+                        $scope.setMouth([newMood, oldMood]);
+                    });
+                });
 
         }]);

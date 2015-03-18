@@ -595,18 +595,19 @@ address {
   font-weight: 400;
   src: local('Pacifico Regular'), local('Pacifico-Regular'), url(http://fonts.gstatic.com/s/pacifico/v7/fKnfV28XkldRW297cFLeqfesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
 }
-h1,
-h2,
-h3 {
+.type-fancy {
   font-family: "pacifico", serif;
 }
-h1 {
+h1,
+.type-h1 {
   font-size: 10vh;
 }
-h2 {
+h2,
+.type-h2 {
   font-size: 5vh;
 }
-h3 {
+h3,
+.type-h3 {
   font-size: 2.5vh;
 }
 body {
@@ -622,28 +623,17 @@ body {
   color: #fff;
   width: 100%;
 }
-.main-container svg,
-.main-container.mood-none svg,
-.main-container path,
-.main-container.mood-none path {
-  -webkit-transition: 500ms ease-out all;
-  transition: 500ms ease-out all;
-  fill: transparent;
-  stroke: currentColor;
-  stroke-width: 10;
-  stroke-line-cap: round;
-}
 .main-container.mood-super-happy {
   background: #28d491;
   color: #156e4b;
 }
-.main-container.mood-pretty-happy {
-  background: #edf0b2;
-  color: #7c994d;
-}
 .main-container.mood-very-happy {
   background: #8be2a2;
   color: #4c7c59;
+}
+.main-container.mood-pretty-happy {
+  background: #edf0b2;
+  color: #7c994d;
 }
 .main-container.mood-pretty-unhappy {
   background: #ffca82;
@@ -669,4 +659,79 @@ body .main-container {
   height: 100%;
   padding: 0 10%;
   width: 100%;
+}
+body .moodtracker-vis {
+  margin-top: 10vh;
+}
+body .moodtracker-vis #eyes {
+  max-height: 11.11111111vh;
+}
+body .moodtracker-vis #mouth {
+  max-height: 38.88888889vh;
+}
+svg {
+  -webkit-transition: 500ms ease-out all;
+  transition: 500ms ease-out all;
+  stroke: currentColor;
+  fill: currentColor;
+}
+svg#mouth {
+  fill: transparent;
+  stroke-width: 10;
+  stroke-line-cap: round;
+}
+.moodtracker-submit {
+  width: 100%;
+  appearance: none;
+  padding: .25em 1em .5em;
+  border: none;
+  border-radius: .25em;
+  font-family: "pacifico", serif;
+  font-size: 5vh;
+  -webkit-transition: 100ms ease all;
+  transition: 100ms ease all;
+  background: rgba(255, 255, 255, 0.7);
+  color: currentColor;
+}
+.moodtracker-submit:focus {
+  outline: none;
+}
+.moodtracker-submit:active {
+  margin-top: .15em;
+}
+.mood-super-happy .moodtracker-submit {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #21b079;
+}
+.mood-super-happy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.2em #21b079;
+}
+.mood-very-happy .moodtracker-submit {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #75be88;
+}
+.mood-very-happy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #75be88;
+}
+.mood-pretty-happy .moodtracker-submit {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #c5d28f;
+}
+.mood-pretty-happy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #c5d28f;
+}
+.mood-super-unhappy .moodtracker-submit {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #e44646;
+}
+.mood-super-unhappy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #e44646;
+}
+.mood-very-unhappy .moodtracker-submit {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #ed7b56;
+}
+.mood-very-unhappy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #ed7b56;
+}
+.mood-pretty-unhappy .moodtracker-submit {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.25em 0 0.25em #edae63;
+}
+.mood-pretty-unhappy .moodtracker-submit:active {
+  box-shadow: 0 0.4em 0 -0.25em #ffffff inset, 0 0.1em 0 0.1em #edae63;
 }

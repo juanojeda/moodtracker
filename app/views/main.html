@@ -1,24 +1,31 @@
-<header class="header">
-  <h1>Moodtracker</h1>
+<div ng-controller="faceCtrl" 
+     hm-doubletap="resetMood()">
+  <header class="header">
 
-  <a class="info">What is this?</a>
-</header>
+    <a class="info">What is this?</a>
+  </header>
 
-<div class="howyadoin">
-  <h2>How are you feeling?</h2>
-  <p></p>
+  <div class="howyadoin≈">
+    <h2 class="text-center type-fancy">How are you feeling?</h2>
+  </div>
+
+  <div class="moodtracker">
+    <figure class="moodtracker-vis"
+            hm-panup="moodChange.down()"
+            hm-pandown="moodChange.up()"
+            hm-panend="moodChange.resetHolder()"
+            hm-recognizer-options='{"threshold": 40}'>
+      <svg id="eyes" viewbox="0 0 100 20">
+        <circle cx="30" cy="10" ng-attr-r="{{currentMood().value + 5}}"/>
+        <circle cx="70" cy="10" ng-attr-r="{{currentMood().value + 5}}"/>
+      </svg>
+      <svg id="mouth" viewbox="0 0 100 70"></svg>
+    </figure>
+
+    <div class="text-center type-h2 type-fancy" ng-if="currentMood().value !== 0">
+      <p>I'm Feeling</p>
+      <button class="moodtracker-submit" ng-click="setMood(currentMood().value)">{{currentMood().text}}</button>
+    </div>
+  </div>  
 </div>
 
-<div class="moodtracker">
-  <figure class="moodtracker-vis" ng-controller="faceCtrl" hm-panup="moodChange.down()" hm-pandown="moodChange.up()" hm-panend="moodChange.resetHolder()" hm-recognizer-options='{"threshold": 40}'>
-    <svg id="face" viewbox="0 0 100 80"></svg>
-  </figure>
-
-
-  <button class="moodtracker-submit" ng-if="currentMood().value" ng-click="setMood(currentMood().value)">I'm feeling {{currentMood().text}}</button>
-  <span ng-if="moodsArr.length">{{getAverageMood(moodsArr)}} out of {{moodsArr.length}} moods</span>
-</div>
-
-<footer class="footer">
-  <p><span class="glyphicon glyphicon-heart"></span> from the Kiandra team</p>
-</footer>
