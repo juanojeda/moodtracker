@@ -627,13 +627,13 @@ body {
   background: #28d491;
   color: #156e4b;
 }
-.main-container.mood-pretty-happy {
-  background: #edf0b2;
-  color: #7c994d;
-}
 .main-container.mood-very-happy {
   background: #8be2a2;
   color: #4c7c59;
+}
+.main-container.mood-pretty-happy {
+  background: #edf0b2;
+  color: #7c994d;
 }
 .main-container.mood-pretty-unhappy {
   background: #ffca82;
